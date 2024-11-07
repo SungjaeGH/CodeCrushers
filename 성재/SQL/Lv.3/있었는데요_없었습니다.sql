@@ -1,0 +1,8 @@
+-- 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/59043
+
+-- MYSQL & ORACLE
+SELECT A.ANIMAL_ID, A.NAME
+FROM ANIMAL_INS A
+         INNER JOIN ANIMAL_OUTS B ON A.ANIMAL_ID = B.ANIMAL_ID
+WHERE A.DATETIME > B.DATETIME
+ORDER BY A.DATETIME;
