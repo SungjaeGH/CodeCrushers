@@ -1,0 +1,19 @@
+-- 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/301651
+
+WITH RECURSIVE cte AS (
+    -- 첫 번째 SELECT: 최상위 노드 (부모가 없는 노드)
+    SELECT ID, 1 AS GENERATION
+    FROM ECOLI_DATA
+    WHERE PARENT_ID IS NULL
+
+    UNION ALL
+
+    -- 두 번째 SELECT: 자식 노드
+    SELECT B.ID, A.GENERATION + 1
+    FROM cte A
+             INNER JOIN ECOLI_DATA B ON A.ID = B.PARENT_ID)
+
+SELECT COUNT(*) AS `COUNT`, GENERATION
+FROM cte
+WHERE ID NOT IN (SELECT DISTINCT PARENT_ID FROM ECOLI_DATA WHERE PARENT_ID IS NOT NULL)
+GROUP BY GENERATION;
