@@ -1,0 +1,8 @@
+-- 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/273712
+
+-- MYSQL & ORACLE
+SELECT A.ITEM_ID, A.ITEM_NAME, A.RARITY
+FROM ITEM_INFO A
+         LEFT OUTER JOIN ITEM_TREE B ON A.ITEM_ID = B.PARENT_ITEM_ID
+WHERE B.ITEM_ID IS NULL
+ORDER BY A.ITEM_ID DESC;
