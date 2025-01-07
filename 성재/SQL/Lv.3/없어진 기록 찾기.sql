@@ -1,0 +1,9 @@
+-- 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/59042
+
+-- MYSQL & ORACLE
+SELECT B.ANIMAL_ID,
+       B.NAME
+FROM ANIMAL_INS A
+         RIGHT OUTER JOIN ANIMAL_OUTS B ON A.ANIMAL_ID = B.ANIMAL_ID
+WHERE A.ANIMAL_ID IS NULL
+ORDER BY B.ANIMAL_ID;
